@@ -1,0 +1,112 @@
+/* Shared backdrop that stays put while screens fade in and out on top of it */
+.stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Fill the phone screen; dvh tracks browser toolbars showing/hiding */
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding:
+    max(24px, env(safe-area-inset-top))
+    max(16px, env(safe-area-inset-right))
+    max(24px, env(safe-area-inset-bottom))
+    max(16px, env(safe-area-inset-left));
+  box-sizing: border-box;
+  background: #11151c url('./assets/photos/spooky-background.jpg') center /
+    cover no-repeat;
+  color: #e8e6e3;
+  text-align: center;
+  --glow: 168, 85, 247;
+  --glow-action: 249, 115, 22;
+}
+
+.stage h1 {
+  margin: 0 0 12px;
+  font-family: var(--heading);
+  font-size: clamp(2.25rem, 11vw, 4rem);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  /* Tight inner glow, then wider soft halos */
+  text-shadow:
+    0 0 4px rgba(var(--glow), 0.9),
+    0 0 12px rgba(var(--glow), 0.8),
+    0 0 28px rgba(var(--glow), 0.6),
+    0 0 48px rgba(var(--glow), 0.4);
+}
+
+/* One full-height screen; fades in on arrival and out via .is-leaving */
+.screen {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 32rem;
+  animation: fade-in var(--fade) ease backwards;
+  transition: opacity var(--fade) ease;
+}
+
+.screen.is-leaving {
+  opacity: 0;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* Frosted round button with white text and an orange glow */
+.glow-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* Comfortable thumb-sized tap target */
+  min-width: 64px;
+  height: 64px;
+  padding: 0;
+  border: 0;
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  font-family: var(--heading);
+  line-height: 1;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  text-shadow:
+    0 0 4px rgba(var(--glow-action), 0.9),
+    0 0 12px rgba(var(--glow-action), 0.8),
+    0 0 28px rgba(var(--glow-action), 0.6),
+    0 0 48px rgba(var(--glow-action), 0.4);
+  transition: transform 0.15s ease;
+}
+
+.glow-button-arrow {
+  font-size: 4rem;
+}
+
+/* The ‹ › glyphs sit high in Special Elite; nudge them to the optical center */
+.glow-button-arrow span {
+  transform: translateY(0.1em);
+}
+
+.glow-button:active:not(:disabled) {
+  transform: scale(0.92);
+}
+
+/* Disabled: greyed-out text, faint glow */
+.glow-button:disabled {
+  cursor: default;
+  color: #8a8a8f;
+  text-shadow:
+    0 0 4px rgba(var(--glow-action), 0.35),
+    0 0 12px rgba(var(--glow-action), 0.2);
+}
+
+.glow-button:focus-visible {
+  outline: 2px solid rgba(var(--glow-action), 0.9);
+  outline-offset: 4px;
+}

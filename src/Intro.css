@@ -1,0 +1,49 @@
+.intro-story {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.intro-text {
+  margin: 0;
+  font-family: var(--heading);
+  font-size: 1.375rem;
+  line-height: 1.6;
+  text-shadow:
+    0 0 3px rgba(var(--glow), 0.8),
+    0 0 10px rgba(var(--glow), 0.5);
+  transition: opacity var(--fade) ease;
+}
+
+.intro-text.is-hidden {
+  opacity: 0;
+}
+
+/* Fixed height so swapping arrows for Enter doesn't shift the page */
+.intro-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  min-height: 64px;
+}
+
+.intro-progress {
+  min-width: 4ch;
+  font-family: var(--heading);
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  opacity: 0.75;
+}
+
+.intro-enter {
+  padding: 0 36px;
+  font-size: 1.5rem;
+  letter-spacing: 0.08em;
+  animation: fade-in var(--fade) ease backwards;
+}

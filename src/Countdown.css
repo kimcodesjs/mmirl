@@ -1,0 +1,30 @@
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-family: var(--heading);
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 48px;
+}
+
+.countdown-value {
+  font-size: 2rem;
+  line-height: 1.1;
+  text-shadow:
+    0 0 3px rgba(var(--glow), 0.9),
+    0 0 10px rgba(var(--glow), 0.7),
+    0 0 20px rgba(var(--glow), 0.5);
+}
+
+.countdown-label {
+  margin-top: 4px;
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}

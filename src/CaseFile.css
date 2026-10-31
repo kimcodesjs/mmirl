@@ -1,0 +1,31 @@
+.case-file-victim {
+  margin-top: 24px;
+}
+
+/* Frosted panel matching the buttons */
+.case-details {
+  display: grid;
+  gap: 20px;
+  width: 100%;
+  max-width: 280px;
+  margin: 32px 0 0;
+  padding: 20px 24px;
+  box-sizing: border-box;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  font-family: var(--heading);
+}
+
+.case-detail dt {
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.case-detail dd {
+  margin: 4px 0 0;
+  font-size: 1.25rem;
+}

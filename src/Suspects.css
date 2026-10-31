@@ -1,0 +1,13 @@
+.memory-status {
+  margin: 8px 0 0;
+  font-family: var(--heading);
+  font-size: 0.875rem;
+  color: #8a8a8f;
+}
+
+.memory-status.is-unlocked {
+  color: #fff;
+  text-shadow:
+    0 0 3px rgba(var(--glow-action), 0.9),
+    0 0 10px rgba(var(--glow-action), 0.6);
+}

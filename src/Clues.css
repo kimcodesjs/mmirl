@@ -1,0 +1,44 @@
+.clues-intro {
+  max-width: 300px;
+  margin: 20px 0 0;
+  font-family: var(--heading);
+  font-size: 1rem;
+  line-height: 1.5;
+  opacity: 0.85;
+}
+
+.clues {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 280px;
+  margin: 32px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Doubled class so it outranks the shared .glow-button, which loads later */
+.glow-button.clue {
+  justify-content: flex-start;
+  gap: 16px;
+  width: 100%;
+  padding: 0 20px;
+  border-radius: 12px;
+  font-size: 1.25rem;
+  text-align: left;
+}
+
+.clue-number {
+  min-width: 2ch;
+}
+
+.clue-text {
+  animation: fade-in 0.4s ease backwards;
+}
+
+/* Not found yet: dimmed placeholder, no glow */
+.clue[aria-pressed='false'] .clue-text {
+  color: #8a8a8f;
+  text-shadow: none;
+}

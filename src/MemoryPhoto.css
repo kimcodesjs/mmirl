@@ -1,0 +1,77 @@
+.memory-photo {
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  aspect-ratio: 740 / 1024;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  perspective: 1200px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.memory-photo.is-unlocked {
+  cursor: pointer;
+}
+
+.memory-photo-inner {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.7s ease;
+}
+
+.memory-photo.is-flipped .memory-photo-inner {
+  transform: rotateY(180deg);
+}
+
+.memory-photo-face {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  object-fit: cover;
+}
+
+/* Unlocked photos pick up the orange "tap me" glow used by the buttons */
+.memory-photo.is-unlocked .memory-photo-face {
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.6),
+    0 0 16px rgba(var(--glow-action), 0.5);
+}
+
+.memory-photo-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  box-sizing: border-box;
+  transform: rotateY(180deg);
+  background: rgba(17, 21, 28, 0.94);
+  font-family: var(--heading);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  text-shadow:
+    0 0 3px rgba(var(--glow), 0.8),
+    0 0 10px rgba(var(--glow), 0.5);
+}
+
+.memory-photo:focus-visible {
+  outline: 2px solid rgba(var(--glow-action), 0.9);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .memory-photo-inner {
+    transition: none;
+  }
+}

@@ -4,9 +4,9 @@ import './Intro.css'
 
 const STORY = [
   'The year is 1826. Loved ones have gathered at 367 Mohawk Ave to wed sweet Ms. Barber to the distinguished Mr. Herbert.',
-  "The atmosphere is joyous - true love in the air. That is, until Mr. Bell is discovered deceased in the basement of the newly weds' home.",
-  "While the obvious may be assumed, that the murderer is amongst those present, the time's detectives were unsuccessful in their attempts to facilitate justice.",
-  'Two hundred years later this eve, may this murder yet be solved?',
+  "The atmosphere is joyous - true love in the air as the ceremony concludes. Joyous indeed - that is, until Mr. Bell is discovered deceased in the basement of the newly weds' home.",
+  "While the obvious may be assumed, that the murderer is amongst those present, detectives at the time were unsuccessful in their attempts to facilitate justice. The culprit was never identified.",
+  'Tonight, while the veil between life and death is at its thinnest, we call upon the spirits of those with most intimate knowledge of this crime. May this murder yet be solved?',
 ]
 
 type IntroProps = {
@@ -52,10 +52,11 @@ function Intro({ onEnter }: IntroProps) {
         {isLast ? (
           <button
             type="button"
-            className="glow-button intro-enter"
+            className="glow-button glow-button-arrow"
+            aria-label="Enter"
             onClick={() => screen.fadeOutThen(onEnter)}
           >
-            Enter
+            <span aria-hidden="true">&rsaquo;&rsaquo;</span>
           </button>
         ) : (
           <>

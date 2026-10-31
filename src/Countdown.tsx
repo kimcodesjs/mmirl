@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useNow } from './clock.ts'
 import './Countdown.css'
 
 type CountdownProps = {
   target: Date
 }
 
-function getRemaining(target: Date) {
-  const ms = Math.max(0, target.getTime() - Date.now())
+function getRemaining(target: Date, nowMs: number) {
+  const ms = Math.max(0, target.getTime() - nowMs)
   const totalSeconds = Math.floor(ms / 1000)
   return {
     days: Math.floor(totalSeconds / 86400),
@@ -19,12 +19,7 @@ function getRemaining(target: Date) {
 const pad = (n: number) => String(n).padStart(2, '0')
 
 function Countdown({ target }: CountdownProps) {
-  const [remaining, setRemaining] = useState(() => getRemaining(target))
-
-  useEffect(() => {
-    const id = setInterval(() => setRemaining(getRemaining(target)), 1000)
-    return () => clearInterval(id)
-  }, [target])
+  const remaining = getRemaining(target, useNow())
 
   const units = [
     { value: remaining.days, label: 'days' },

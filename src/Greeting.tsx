@@ -1,9 +1,7 @@
+import { PARTY_START } from './clock.ts'
 import Countdown from './Countdown.tsx'
 import { useFadeOut } from './useFadeOut.ts'
 import './Greeting.css'
-
-// 7:30 PM Saturday, October 31, in the guest's local time zone
-const PARTY_START = new Date(2026, 9, 31, 19, 30)
 
 type GreetingProps = {
   onContinue: () => void

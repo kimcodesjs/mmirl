@@ -1,0 +1,30 @@
+.others-group {
+  width: 100%;
+  margin-top: 32px;
+}
+
+.others-group + .others-group {
+  margin-top: 56px;
+}
+
+/* Small-caps style label with a faint rule on either side */
+.others-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  font-family: var(--heading);
+  font-size: 1.125rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.others-heading::before,
+.others-heading::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.25);
+}

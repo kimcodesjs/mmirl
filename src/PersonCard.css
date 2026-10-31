@@ -1,0 +1,51 @@
+/* List of cards: one per row on phones, two columns once there's room */
+.person-grid {
+  display: grid;
+  gap: 40px;
+  width: 100%;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 600px) {
+  .person-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.person {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.person-photo {
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+.person-name {
+  margin: 16px 0 4px;
+  font-family: var(--heading);
+  font-size: 1.75rem;
+  font-weight: 400;
+  text-shadow:
+    0 0 3px rgba(var(--glow), 0.9),
+    0 0 10px rgba(var(--glow), 0.7),
+    0 0 20px rgba(var(--glow), 0.5);
+}
+
+.person-role {
+  margin: 0;
+  font-family: var(--heading);
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}

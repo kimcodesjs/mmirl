@@ -13,12 +13,46 @@
     max(24px, env(safe-area-inset-bottom))
     max(16px, env(safe-area-inset-left));
   box-sizing: border-box;
-  background: #11151c url('./assets/photos/spooky-background.jpg') center /
-    cover no-repeat;
+  /* Own stacking context so the backdrop below sits behind the content */
+  isolation: isolate;
   color: #e8e6e3;
   text-align: center;
   --glow: 168, 85, 247;
   --glow-action: 249, 115, 22;
+}
+
+/* Pinned to the screen so long pages scroll over the photo instead of stretching it
+   (background-attachment: fixed doesn't work on iOS) */
+.stage::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: #11151c url('./assets/photos/spooky-background.jpg') center /
+    cover no-repeat;
+}
+
+/* Back arrow on the left, title centered */
+.section-header {
+  display: grid;
+  grid-template-columns: 64px 1fr 64px;
+  align-items: center;
+  width: 100%;
+}
+
+/* Same faint line as the Others page group labels */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  margin: 16px 0 0;
+  border: 0;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.stage .section-header h1 {
+  margin: 0;
+  /* Shrinks on narrow phones so titles like "Case File" stay on one line */
+  font-size: clamp(1.5rem, 9vw, 2.25rem);
 }
 
 .stage h1 {
@@ -91,6 +125,14 @@
 /* The ‹ › glyphs sit high in Special Elite; nudge them to the optical center */
 .glow-button-arrow span {
   transform: translateY(0.1em);
+}
+
+/* Rounded rectangle for text buttons */
+.glow-button-text {
+  padding: 0 24px;
+  border-radius: 12px;
+  font-size: 1.5rem;
+  letter-spacing: 0.08em;
 }
 
 .glow-button:active:not(:disabled) {

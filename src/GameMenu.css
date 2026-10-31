@@ -1,0 +1,12 @@
+.game-menu {
+  justify-content: center;
+}
+
+.game-menu-options {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 280px;
+  margin-top: 32px;
+}
